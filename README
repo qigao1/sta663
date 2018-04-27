@@ -3,7 +3,7 @@ This package helps a comparison of 3 kinds of k-means methods: Classic k-means, 
 Author: Qi Gao
 
 The algorithms are obtained from:
-Bahmani, B., Moseley, B., Vattani, A., Kumar, R., & Vassilvitskii, S. (n.d.). Scalable K-Means. Retrieved from http://theory.stanford.edu/~sergei/papers/vldb12-kmpar.pdf
+Bahmani, B., Moseley, B., Vattani, A., Kumar, R., & Vassilvitskii, S. (n.d.). Scalable K-Means++. Retrieved from http://theory.stanford.edu/~sergei/papers/vldb12-kmpar.pdf
 
 Installization:
 1. Download and uncompress or clone this package
