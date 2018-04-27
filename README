@@ -1,0 +1,24 @@
+This package helps a comparison of 3 kinds of k-means methods: Classic k-means, k-means++, and k-means||. 
+
+Author: Qi Gao
+
+The algorithms are obtained from:
+Bahmani, B., Moseley, B., Vattani, A., Kumar, R., & Vassilvitskii, S. (n.d.). 
+Scalable K-Means. Retrieved from http://theory.stanford.edu/~sergei/papers/vldb12-kmpar.pdf
+
+Installization:
+1. Download and uncompress or clone this package
+2. Change directory to kmeansmethods/
+3. Run "python3 setup.py install"
+
+A total of 2 packages would be installed: kmeanspython and kmeanscython. We provide python version and cython 
+for every function to compare their performance. Functions in kmeanscython package have "_cython" suffix in 
+their names.
+
+All the 3 algorithms use Lloyd’s iteration as their iteration part. However they have different initialization 
+of centers, which may reduce the number of loops to converge. 
+All 3 initialization functions, classic initialization function "kmeansinit", k-means++ initialization function 
+"kmeansinitpp", and k-means|| initialization function "kmeansinitvv", takes 2 input variable: numpy array of data
+X, and number of centers k. And they return a numpy array of generated initial centers.
+The iteration function "kmeansloop" takes 4 input variables: numpy array of data X, initial centers init (generated
+by the 3 initialization functions), number of maximum iteration maxiter, and tolerance for ending the iteration tol.
