@@ -4,6 +4,8 @@ from operator import itemgetter
 def kmeansloop(X, init, maxiter = 100, tol = 1e-4):
     '''
     finding the best centers
+    notations: newcenter is the updated center each loop; clulist is the cluster that each observation belongs to;
+    count is total loop to get a tolerance smaller than 1e-4; cost is the total Euclidean distance
     '''
     oldcenter = init
     l, n = X.shape
