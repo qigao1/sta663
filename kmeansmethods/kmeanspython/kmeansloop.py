@@ -2,6 +2,9 @@ import numpy as np
 from operator import itemgetter
 
 def kmeansloop(X, init, maxiter = 100, tol = 1e-4):
+    '''
+    finding the best centers
+    '''
     oldcenter = init
     l, n = X.shape
     k = len(init)
