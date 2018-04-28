@@ -2,6 +2,9 @@ import numpy as np
 import random
 
 def kmeansinitpp(X, k):
+    """
+    generating initial centers that with a higer probability to be far from each other
+    """
     n = X.shape[0]
     C = X[random.randint(0, n-1)].reshape((1,-1))
     while len(C) < k:
