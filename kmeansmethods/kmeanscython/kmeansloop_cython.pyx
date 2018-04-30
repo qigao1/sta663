@@ -7,7 +7,7 @@ from operator import itemgetter
 @cython.wraparound(False)
 @cython.cdivision(True)
 
-def kmeansloop_cython(double [:, :] X, double [:, :] init, int maxiter = 100, double tol = 1e-4):
+def kmeansloop_cython(double [:, :] X, double [:, :] init, int maxiter = 100, double tol = 1e-4, double [:] weight = None):
     cdef long l = X.shape[0]
     cdef long n = X.shape[1]
     cdef long k = init.shape[0]
