@@ -2,6 +2,7 @@ cimport cython
 import numpy as np
 import random
 from collections import Counter
+from operator import itemgetter
 from kmeanscython.kmeansinitpp_cython import kmeansinitpp_cython
 from kmeanscython.kmeansloop_cython import kmeansloop_cython
 
