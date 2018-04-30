@@ -22,8 +22,10 @@ def kmeansloop_cython(double [:, :] X, double [:, :] init, int maxiter = 100, do
     cdef double [:] dist
     dist = np.zeros(k)
     cdef double [:] temp = np.zeros(n)
-    cdef int i, j, h, a
-    cdef double num
+    cdef int i, j, h
+    cdef double num, a
+    if weight is None:
+        weight = np.ones(l)
     for i in range(k):
         for j in range(n):
             oldcenter[i, j] = init[i, j]
@@ -50,13 +52,13 @@ def kmeansloop_cython(double [:, :] X, double [:, :] init, int maxiter = 100, do
                     a = 0
                     for h in range(l):
                         if clulist[h] == i:
-                            num += X[h, j]
-                            a += 1
+                            num += (weight[h] * X[h, j])
+                            a += weight[h]
                     newcenter[i, j] = num / a
         if np.allclose(oldcenter, newcenter, rtol=0, atol=tol):
             break
         for i in range(k):
             for j in range(n):
                 oldcenter[i, j] = newcenter[i, j]
-    cost = np.sum(np.square(dislist))
+    cost = np.inner(weight, np.square(dislist))
     return newcenter, clulist, count, cost
