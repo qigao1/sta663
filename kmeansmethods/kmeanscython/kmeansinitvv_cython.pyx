@@ -1,6 +1,7 @@
 cimport cython
 import numpy as np
 import random
+from collections import Counter
 from kmeanscython.kmeansinitpp_cython import kmeansinitpp_cython
 from kmeanscython.kmeansloop_cython import kmeansloop_cython
 
@@ -42,7 +43,15 @@ def kmeansinitvv_cython(double [:, :] X, int k, double l):
     for i in range(len(sampid)):
         for j in range(n):
             C[i, j] = X[sampid[i], j]
+    clulist = np.zeros(m)
+    for i in range(m):
+        for j in range(len(sampid)):
+            for h in range(n):
+                temp[h] = C[j, h] - X[i, h]
+            dist[j] = np.linalg.norm(temp)
+        clulist[i], dislist[i] = min(enumerate(dist), key=itemgetter(1))
+    weight = np.array(list(dict(Counter(clulist)).values()), dtype = np.double)
     init = kmeansinitpp_cython(C, k)
-    out = kmeansloop_cython(np.asarray(C), np.asarray(init), 10)
+    out = kmeansloop_cython(np.asarray(C), np.asarray(init), 10, weight = weight)
     outt = out[0]
     return outt
