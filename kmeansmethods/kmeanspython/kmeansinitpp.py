@@ -3,7 +3,8 @@ import random
 
 def kmeansinitpp(X, k):
     """
-    generating initial centers that with a higer probability to be far from each other
+    k-means++
+    notations: X is the data set; k is the number of desired clusters
     """
     n = X.shape[0]
     C = X[random.randint(0, n-1)].reshape((1,-1))
