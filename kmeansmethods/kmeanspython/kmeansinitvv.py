@@ -6,6 +6,10 @@ from kmeanspython.kmeansinitpp import kmeansinitpp
 from kmeanspython.kmeansloop import kmeansloop
 
 def kmeansinitvv(X, k, l):
+    """
+    k-meansII 
+    Notations: X is the data set; k is desired cluster number; l is oversampling factor
+    """
     n = X.shape[0]
     C = X[random.randint(0, n-1)].reshape((1,-1))
     dislist = np.square(np.linalg.norm(X - C, axis = 1))
